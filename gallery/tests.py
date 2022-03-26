@@ -36,6 +36,13 @@ class ImageTestClass(TestCase):
         self.image.update_image(self.image.id,new_photo)
         new_photo=Image.objects.filter(photo='Wallunit.png')
         self.assertTrue(len(new_photo)==1)
+
+    def test_get_image(self):
+        image_search=self.image.get_image(self.image.id)
+        image = Image.objects.filter(id=self.image.id)
+        self.assertTrue(image_search,image)
+
+    
     
     
 
