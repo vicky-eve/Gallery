@@ -25,6 +25,12 @@ class Image(models.Model):
 
     def update_image(self):
         self.update()
-        
+
+    @classmethod
+    def get_image(cls):
+        photo = Image.object()
+        return photo
+
+
     def __str__(self) -> str:
         return self.name
