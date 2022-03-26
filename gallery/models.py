@@ -10,12 +10,12 @@ class Location(models.Model):
     name=models.CharField(max_length=100)
 
 class Image(models.Model):
-    photo=models.ImageField(upload_to=('images/'))
-    date_posted=models.DateTimeField(auto_now_add=True)
+    photo=models.ImageField(upload_to=('images/'),null=True)
+    date_posted=models.DateTimeField(auto_now_add=True,null=True)
     name=models.CharField(max_length=100)
     details=models.TextField(max_length=1000)
-    category=models.ForeignKey(Category)
-    location=models.ForeignKey(Location)
+    category=models.ForeignKey(Category,on_delete=models.CASCADE,null=True)
+    location=models.ForeignKey(Location,on_delete=models.CASCADE,null=True)
     
     def save_photo(self):
         self.save()
