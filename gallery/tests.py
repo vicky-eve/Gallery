@@ -42,7 +42,13 @@ class ImageTestClass(TestCase):
         image = Image.objects.filter(id=self.image.id)
         self.assertTrue(image_search,image)
 
-    
-    
+    def test_search_by_category(self):
+        category_search=self.image.search_image('House facilities')
+        self.assertTrue(len(category_search)>=1)
+
+    def test_filter_by_location(self):
+        location_search=self.image.filter_by_location('Roysambu')
+        self.assertTrue(len(location_search)==1)
+
     
 
