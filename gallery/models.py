@@ -6,6 +6,16 @@ from django.db import models
 class Category(models.Model):
     name=models.CharField(max_length=100)
 
+    def save_category(self):
+        self.save()
+
+    def delete_category(self):
+        self.delete()
+
+    @classmethod
+    def update_category(cls, id, name):
+        cls.objects.filter(id=id).update(name=name)
+
 class Location(models.Model):
     name=models.CharField(max_length=100)
 
@@ -33,8 +43,9 @@ class Image(models.Model):
     def delete_image(self):
         self.delete()
 
-    def update_image(self):
-        self.update()
+    @classmethod
+    def update_image(cls, id, name,details,category, location ):
+        cls.objects.filter(id=id).update(name=name, details=details, category=category, location=location)
 
     @classmethod
     def get_image(cls):
