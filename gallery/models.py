@@ -9,6 +9,16 @@ class Category(models.Model):
 class Location(models.Model):
     name=models.CharField(max_length=100)
 
+    def save_location(self):
+        self.save()
+
+    def delete_location(self):
+        self.delete()
+
+    @classmethod
+    def update_location(cls, id, name):
+        cls.objects.filter(id=id).update(name=name)
+
 class Image(models.Model):
     photo=models.ImageField(upload_to=('images/'),null=True)
     date_posted=models.DateTimeField(auto_now_add=True,null=True)
@@ -40,8 +50,6 @@ class Image(models.Model):
     def filter_by_location(cls, filter_location):
         location = cls.objects.filter(location__name=filter_location).all)
         return location
-
-
 
     def __str__(self) -> str:
         return self.name
