@@ -59,7 +59,7 @@ class Image(models.Model):
 
     @classmethod
     def filter_by_location(cls, filter_location):
-        location = cls.objects.filter(location__name=filter_location).all)
+        location = cls.objects.filter(location__name=filter_location).all()
         return location
 
     def __str__(self) -> str:
