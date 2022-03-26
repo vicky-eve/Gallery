@@ -17,5 +17,11 @@ class Image(models.Model):
     category=models.ForeignKey(Category,on_delete=models.CASCADE,null=True)
     location=models.ForeignKey(Location,on_delete=models.CASCADE,null=True)
     
-    def save_photo(self):
+    def save_image(self):
         self.save()
+
+    def delete_image(self):
+        self.delete()
+
+    def __str__(self) -> str:
+        return self.name
