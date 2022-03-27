@@ -6,10 +6,9 @@ from django.http.response import Http404
 # Create your views here.
 def index(request):
     image=Image.objects.all()
-    
 
     return render (request,'index.html',{'image':image})
-def get_locatiopn(request, search_by_location):
+def get_location(request, search_by_location):
     title="Location"
     location=Location.objects.all()
     image= Image.filter_by_location(search_by_location)
@@ -31,4 +30,8 @@ def get_category(request):
         category_search = Image.search_image(category_search)
         message= f"{category_search}"
 
-        return render (request, 'search.html', {'message':message})
+        return render (request, 'search.html', {'message':message, 'image':category_search,'title':title,})
+
+    else:
+        message = "No category searched"
+        return render (request, 'search.html', {"message":message})
