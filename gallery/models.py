@@ -25,6 +25,7 @@ class Location(models.Model):
     def delete_location(self):
         self.delete()
 
+
     @classmethod
     def update_location(cls, id, name):
         cls.objects.filter(id=id).update(name=name)
