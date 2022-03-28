@@ -7,9 +7,10 @@ from gallery.forms import ImageForm
 
 # Create your views here.
 def index(request):
-    image=Image.objects.all()
+    images=Image.objects.all()
 
-    return render (request,'index.html',{'image':image})
+    return render (request,'index.html',{'images':images})
+
 def get_location(request, search_by_location):
     title="Location"
     location=Location.objects.all()
@@ -19,20 +20,19 @@ def get_location(request, search_by_location):
 
 def get_image(request, image_id):
     try:
-        image=Image.objects.get(id=image_id)
+        images=Image.objects.get(id=image_id)
     except:
         raise Http404()
-    return render (request, "image.html", {'image':image})
+    return render (request, "image.html", {'images':images})
 
 def get_category(request):
-    title="Category"
 
-    if 'category' in request.GET and request.GET["category"]:
-        search_by_category=request.GET.get("category")
+    if 'image' in request.GET and request.GET["image"]:
+        search_category=request.GET.get("image")
         category_search = Image.search_image(category_search)
-        message= f"{category_search}"
+        message= f"{search_category}"
 
-        return render (request, 'search.html', {'message':message, 'image':category_search,'title':title,})
+        return render (request, 'search.html', {'message':message, 'image':category_search})
 
     else:
         message = "No category searched"

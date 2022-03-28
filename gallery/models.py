@@ -31,7 +31,7 @@ class Location(models.Model):
         cls.objects.filter(id=id).update(name=name)
 
 class Image(models.Model):
-    photo=models.ImageField(upload_to=('images/'),null=True)
+    image=models.ImageField(upload_to=('images/'),null=True)
     date_posted=models.DateTimeField(auto_now_add=True,null=True)
     name=models.CharField(max_length=100)
     details=models.TextField(max_length=1000)

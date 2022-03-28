@@ -1,0 +1,25 @@
+{%extends 'base.html'%}
+
+ {% block content %}
+
+ <div class="container">
+
+   <div class="row">
+     <img src="{{image.photo.url}}"  class="img-responsive" alt="">
+   </div>
+
+   <div class="row">
+     <h1 class="text-center">{{image.name}}</h1>
+   </div>
+
+   <div class="row">
+     <p>{{image.details}}</p>
+   </div>
+
+   <div class="row">
+     <p>Posted {{date_posted|timesince}}</p>
+   </div>
+
+ </div>
+
+ {% endblock %}

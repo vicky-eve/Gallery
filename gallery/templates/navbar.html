@@ -8,12 +8,12 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" aria-current="page" href="#">Home<span class="sr-only">(current)</span></a>
+            <a class="nav-link" aria-current="page" href="/index">Home<span class="sr-only"></span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Category</a>
+            <a class="nav-link" href="/admin">Admin</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -21,7 +21,7 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               {% for location in locations %}
-              <a class="dropdown-item" href="/location/{{location.name}}">{{location.name}}</a>
+              <a class="dropdown-item" href="/?location/{{location.name}}">{{location.name}}</a>
               {% endfor %}
             </div>
           </li>

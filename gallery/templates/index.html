@@ -1,12 +1,12 @@
 {%extends 'base.html'%}
 {%block content%}
-
+<br><br><br><br>
 <div>
     <h1 class="text-center">Fine Arts ! The Garden of Secrets</h1>
 </div>
 <div class="row">
 
-    {% for image in image%}
+    {% for image in images%}
     <div class="col-md-4">
         <div class="img" data-toggle="modal" data-target="#exampleModalLong{{image.id}}">
             <img src="{{image.image.url}}" alt="" class="responsive" >
@@ -37,8 +37,6 @@
           </div>
         </div>
       </div>
-
-      <a href="{% url 'new_image' %}" class="btn btn-outline-dark bg-dark text-white rounded-pill">Add Image</a>
     </div>
 
         {% endfor %}
