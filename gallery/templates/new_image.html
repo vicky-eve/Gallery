@@ -1,0 +1,11 @@
+{%extends 'base.html'%}
+{%load bootstrap5%}
+{%block content%}
+{% load crispy_forms_tags %}
+
+<form method="'post" enctype="multipart/form-data" style="margin-top: 1.3em;">
+    {{form|crispy}}
+    {%csrf_token%}
+    <button class="btn btn-dark" type="submit">New photo</button>
+</form>
+{%endblock%}

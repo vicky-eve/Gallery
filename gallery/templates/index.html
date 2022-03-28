@@ -1,15 +1,15 @@
-{%extends 'base.html%}
+{%extends 'base.html'%}
 {%block content%}
-{{%block.super%}}
+
 <div>
-    <h1>Fine Arts ! The Garden of Secrets</h1>
+    <h1 class="text-center">Fine Arts ! The Garden of Secrets</h1>
 </div>
 <div class="row">
 
-    {% for items in image%}
+    {% for image in image%}
     <div class="col-md-4">
-        <div class="img" data-toggle="modal" data-target="#exampleModalLong{{items.id}}">
-            <img src="{{items.image.url}}" alt="" class="responsive" >
+        <div class="img" data-toggle="modal" data-target="#exampleModalLong{{image.id}}">
+            <img src="{{image.image.url}}" alt="" class="responsive" >
         </div>
 
         
@@ -19,17 +19,17 @@
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">{{items.name}}</h5>
+              <h5 class="modal-title" id="exampleModalLongTitle">{{image.name}}</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-                <img src="{{items.image.url}}" alt="" class="responsive">
-                <p>{{items.details}}</p>
-                <p>Category: {{items.category}}</p>
-                <p>Location: {{items.location}}</p>
-                <p>{{items.date_posted}}</p>
+                <img src="{{image.image.url}}" alt="" class="responsive">
+                <p>{{image.details}}</p>
+                <p>Category: {{image.category}}</p>
+                <p>Location: {{image.location}}</p>
+                <p>{{image.date_posted}}</p>
             </div>
             <div class="modal-footer">
               <button class="btn btn-brown" type="button" value="{{ items.image.url }}" onclick="copyToClipboard(this.value)">copu url</button>
@@ -38,6 +38,8 @@
         </div>
       </div>
 
+      <a href="{% url 'new_image' %}" class="btn btn-outline-dark bg-dark text-white rounded-pill">Add Image</a>
+    </div>
 
         {% endfor %}
         <script>

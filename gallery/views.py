@@ -1,6 +1,8 @@
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from .models import Image, Location, Category
 from django.http.response import Http404
+from gallery.forms import ImageForm
 
 
 # Create your views here.
@@ -35,3 +37,14 @@ def get_category(request):
     else:
         message = "No category searched"
         return render (request, 'search.html', {"message":message})
+
+def new_image(request):
+    if request.method=='POST':
+        form=ImageForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.instance.user = request.user
+            form.save()
+        return HttpResponseRedirect ('/')
+    else:
+        form=ImageForm()
+    return render(request, 'new_image.html', {'form':form})
