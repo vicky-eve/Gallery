@@ -5,9 +5,9 @@ from django.urls import path
 from . import views
 
 urlpatterns= [
-    path('index/', views.index, name='index'),
-    path('search/', views.get_category, name='category'),
-    path('location/<str:search_by_location>/', views.get_location,name='location'),
+    path('', views.index, name='index'),
+    path('search/', views.search, name='category'),
+    path('location/<str:filter_location>/', views.get_location,name='location'),
     path('image/<int:image_id>/',views.get_image, name='image'),
     path('new_image/', views.new_image, name='new_image')
 ]

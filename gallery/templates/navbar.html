@@ -20,8 +20,8 @@
               Location
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              {% for location in locations %}
-              <a class="dropdown-item" href="/?location/{{location.name}}">{{location.name}}</a>
+              {% for location in location %}
+              <a class="dropdown-item" href="/location/{{location.name}}">{{location.name}}</a>
               {% endfor %}
             </div>
           </li>

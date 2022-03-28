@@ -4,7 +4,7 @@
   <br><br><br><br>
   <div class="row">
     {% if image %}
-      <h2>Found {{ image|length }} of searched term {{message}}</h2>
+      <h2>Found {{ images|length }} of searched term {{message}}</h2>
     {% else %}
       <h2> No images found for no {{message}}</h2>
     {% endif %}
@@ -14,7 +14,7 @@
   <div class="row">
 
     {% if image %}
-    {% for image in image %}
+    {% for image in images %}
       <div class="col-sm-8 col-md-4">
           <h1>{{image.name}}</h1>
           
