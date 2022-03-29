@@ -17,7 +17,7 @@ import dj_database_url
 from decouple import config,Csv
 
 MODE=config("MODE", default="dev")
-SECRET_KEY = config('django-insecure-b(w&p&*pzt1=*5naxg^2qw3_ln1)yqo#b7jdol6825^bltwvan')
+SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
 # development
 if config('MODE')=="prod":
@@ -29,6 +29,7 @@ if config('MODE')=="prod":
            'PASSWORD': config('DB_PASSWORD'),
            'HOST': config('DB_HOST'),
            'PORT': '',
+           'SECRET_KEY': config('SECRET_KEY')
                  }
        
    }
