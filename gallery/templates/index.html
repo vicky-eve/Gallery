@@ -18,13 +18,13 @@
   }
 </style>
 <br><br><br><br>
-<body>
-  <div class="container-fluid text-center"style="background-color: grey; padding:100px;" >
+<body style="background-color:darkgrey;" >
+  <div class="container-fluid text-center"style="background-color: teal; padding:100px;" >
     <h1 class="">Fine Arts ! The Garden of Secrets</h1>
     <h4 style="font-style: italic; color: purple;">"Come experience colour and splash!"</h4>
     <br><br><br><br>
   </div>
-  
+  <br>
   <div class="trial row">
     {% for image in images%}
   
@@ -41,15 +41,16 @@
         <div class="modal fade" id="exampleModal{{image.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
-              <div class="modal-header" style="background-color: greenyellow;">
+              <div class="modal-header" style="background-color: blue;">
                 <h5 class="modal-title" id="exampleModalLabel">{{image.name}}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body" style="background-color: grey;">
                 <p><img src="{{image.image.url}}" ></p>
                 <p>{{image.details}}</p>
-                <p>location: {{image.location}}</p>
-                <p>category:{{image.category}}</p>
+                <p>location: {{image.location.name}}</p>
+                <p>category:{{image.category.name}}</p>
+                <p>{{image.date_posted}}</p>
               </div>
               <div class="modal-footer" style="background-color: blueviolet;">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -62,33 +63,7 @@
   
     
     </div>
-    {% endfor %}
-  
-    <!-- <div class="modal fade" id="exampleModalLong{{items.id}}"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">{{image.name}}</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                  <img src="{{image.image.url}}" alt="" class="responsive">
-                  <p>{{image.details}}</p>
-                  <p>Category: {{image.category}}</p>
-                  <p>Location: {{image.location}}</p>
-                  <p>{{image.date_posted}}</p>
-              </div>
-              <div class="modal-footer">
-                <button class="btn btn-brown" type="button" value="{{ items.image.url }}" onclick="copyToClipboard(this.value)">copu url</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> -->
-  
-    
+    {% endfor %} 
     <script>
       function copyToClipboard(value) {
         function handler(event) {

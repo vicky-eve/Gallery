@@ -4,9 +4,9 @@
   <br><br><br><br>
   <div class="row">
     {% if image %}
-      <h2>Found {{ images|length }} of searched term {{message}}</h2>
+      <h2>Found {{ category|length }} of searched term {{message}}</h2>
     {% else %}
-      <h2> No images found for no {{message}}</h2>
+      <h2>  {{message}}</h2>
     {% endif %}
 
   </div>
@@ -19,8 +19,8 @@
           <h1>{{image.name}}</h1>
           
           <img class="responsive" src="{{image.image.url}}" alt="image">
-          <p>Category: {{image.category}}</p> 
-          <p>Location: {{image.location}}</p>
+          <p>Category: {{image.category.name}}</p> 
+          <p>Location: {{image.location.name}}</p>
           <p>{{images.date_posted}}</p>
           
       </div>

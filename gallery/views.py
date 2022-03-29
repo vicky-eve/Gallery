@@ -1,5 +1,5 @@
-from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render, redirect
+from django.http import  HttpResponseRedirect
+from django.shortcuts import render
 from .models import Image, Location, Category
 from django.http.response import Http404
 from gallery.forms import ImageForm
@@ -40,14 +40,12 @@ def new_image(request):
 
 # search function to search for images
 def search(request):
-    if 'category' in request.GET and request.GET["category"]:
-        # change the search to be in lowercase
-        search_term = request.GET.get("category").lower()
-        searched_images = Image.filter_by_category(search_term)
-        message = f"{search_term}"
-        location = Location.objects.all()
-        return render(request, 'search.html', {"message": message, "images": searched_images, 'location': location})
+    if 'category' in request.GET and request.GET["images"]:
+       
+        search_category = request.GET.get("category")
+        category_search = Image.search_by_category(search_category)
+        message = f"{search_category}"
+        return render(request, 'search.html', {"message": message, "images":category_search})
     else:
-        location = Location.objects.all()
-        message = "You haven't searched for any term"
-        return render(request, 'search.html', {"message": message, 'location': location})
+        message = "No category searched"
+        return render(request, 'search.html', {"message": message})
